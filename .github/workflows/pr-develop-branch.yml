@@ -19,6 +19,9 @@ on:
         - 'force-app/**'
             
 
+permissions:
+  security-events: write
+
 # Jobs to be executed when the above conditions are met
 jobs:
     # This is the name of the job. You can give it whatever name you want
@@ -165,8 +168,6 @@ jobs:
               uses: github/codeql-action/upload-sarif@v2
               with:
                 sarif_file: changed-sources/apexScanResults.sarif
-              permissions:
-                security-events: write
 
             # We do a check-only deploy and we only run the tests specified in the PR
             # If the env variable does not equal 'all', we know that there is a list of
